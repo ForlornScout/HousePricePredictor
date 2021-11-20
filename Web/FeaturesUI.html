@@ -18,29 +18,36 @@
         <table>
             <tr>
                 <td><label for="noBedrooms">Number of Bedrooms: </label></td>
+                <td><input type="checkbox" name="noBedroomsActivate" id=""></td>
                 <td><input type="number" name="noBedrooms" id=""></td>
             </tr>
             <tr>
                 <td><label for="noFullBaths">Number of Full Bathrooms: </label></td>
+                <td><input type="checkbox" name="noFullBathsActivate" id=""></td>
                 <td><input type="number" name="noFullBaths" id=""></td>
             </tr>
             <tr>
                 <td><label for="noHalfBaths">Number of Half Bathrooms: </label></td>
+                <td><input type="checkbox" name="noHalfBathsActivate" id=""></td>
                 <td><input type="number" name="noHalfBaths" id=""></td>
             </tr>
             <tr>
                 <td><label for="noCarGarage">Garage Size (Cars): </label></td>
+                <td><input type="checkbox" name="noCarGarageActivate" id=""></td>
                 <td><input type="number" name="noCarGarage" id=""></td>
             </tr>
             <tr>
                 <td><label for="overallQuality">Overall Quality (Out of 10): </label></td>
+                <td><input type="checkbox" name="overallQualityActivate" id=""></td>
                 <td><input type="number" name="overallQuality" id=""></td>
             </tr>
             <tr>
                 <td><label for="overallCond">Overall Condition (Out of 10): </label></td>
+                <td><input type="checkbox" name="overallCondActivate" id=""></td>
                 <td><input type="number" name="overallCond" id=""></td>
             </tr>
             <tr>
+                <td></td>
                 <td></td>
                 <td style="text-align: right;"><input type="button" value="Submit"></td>
             </tr>
@@ -51,6 +58,8 @@
             if (window.sessionStorage.length === 0) {
                 if (confirm('This window needs to be launched from the main page.\n\nDo you want to go there now?')) {
                     window.location.href = '/';
+                } else {
+                    document.body.innerHTML = `Program was launched improperly. Please navigate to <a href='/'>the root directory</a> and try again.`;
                 }
             } else {
                 var processCode = window.sessionStorage.getItem('ProcessCode');
