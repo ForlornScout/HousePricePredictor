@@ -20,10 +20,14 @@
         <li><a href="javascript:getProgramInformation()">About this Program</a></li>
     </ul>
     <script>
+        document.body.onload = function() {
+            window.sessionStorage.clear();
+        }
+
         function estimateHouses() {
             alert(`This isn't done yet`);
         }
-        
+
         function findSimilarHouses() {
             window.sessionStorage.setItem('ProcessCode', 'similar');
             window.location.href = '/FeaturesUI';
