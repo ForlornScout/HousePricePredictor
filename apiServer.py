@@ -26,5 +26,23 @@ class MainPage(Resource):
 
 api.add_resource(MainPage, '/')
 
+class DownloadDataset(Resource):
+    def get(self):
+        try:
+            return send_file('Dataset/train.csv', as_attachment=True)
+        except FileNotFoundError:
+            abort(404)
+
+api.add_resource(DownloadDataset, '/DownloadTrainData')
+
+class FeaturesUI(Resource):
+    def get(self):
+        try:
+            return send_file('Web/FeaturesUI.html')
+        except FileNotFoundError:
+            abort(404)
+
+api.add_resource(FeaturesUI, '/FeaturesUI')
+
 if __name__ == '__main__':
     app.run()

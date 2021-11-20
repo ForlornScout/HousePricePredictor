@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Entry</title>
+</head>
+
+<body>
+    Features and Options Entry
+    <hr>
+    <div id="introText"></div>
+    <br>
+    <br>
+    <form action="">
+        <table>
+            <tr>
+                <td><label for="noBedrooms">Number of Bedrooms: </label></td>
+                <td><input type="number" name="noBedrooms" id=""></td>
+            </tr>
+            <tr>
+                <td><label for="noFullBaths">Number of Full Bathrooms: </label></td>
+                <td><input type="number" name="noFullBaths" id=""></td>
+            </tr>
+            <tr>
+                <td><label for="noHalfBaths">Number of Half Bathrooms: </label></td>
+                <td><input type="number" name="noHalfBaths" id=""></td>
+            </tr>
+            <tr>
+                <td><label for="noCarGarage">Garage Size (Cars): </label></td>
+                <td><input type="number" name="noCarGarage" id=""></td>
+            </tr>
+            <tr>
+                <td><label for="overallQuality">Overall Quality (Out of 10): </label></td>
+                <td><input type="number" name="overallQuality" id=""></td>
+            </tr>
+            <tr>
+                <td><label for="overallCond">Overall Condition (Out of 10): </label></td>
+                <td><input type="number" name="overallCond" id=""></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right;"><input type="button" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        document.body.onload = function () {
+            if (window.sessionStorage.length === 0) {
+                if (confirm('This window needs to be launched from the main page.\n\nDo you want to go there now?')) {
+                    window.location.href = '/';
+                }
+            } else {
+                var processCode = window.sessionStorage.getItem('ProcessCode');
+                if (processCode == 'similar') {
+                    document.getElementById('introText').innerText = 'Select options below that you require in a house, and similar houses will be shown to you that might have sold recently.'
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

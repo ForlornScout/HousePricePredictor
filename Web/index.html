@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CS464 App</title>
 </head>
+
 <body>
-    This will be the landing page of the program
+    Welcome to House Price Predictor!
+    <hr />
+    <ul>
+        <li><a href="/DownloadTrainData">Download Training Dataset</a></li>
+        <li><a href="#">Estimate a House's Value</a></li>
+        <li><a href="javascript:findSimilarHouses()">Find Similar Houses</a></li>
+    </ul>
+    <script>
+        function findSimilarHouses() {
+            window.sessionStorage.setItem('ProcessCode','similar');
+            window.location.href = '/FeaturesUI';
+        }
+    </script>
 </body>
+
 </html>
