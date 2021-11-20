@@ -13,13 +13,26 @@
     <hr />
     <ul>
         <li><a href="/DownloadTrainData">Download Training Dataset</a></li>
-        <li><a href="#">Estimate a House's Value</a></li>
+        <li><a href="javascript:estimateHouses()">Estimate a House's Value</a></li>
         <li><a href="javascript:findSimilarHouses()">Find Similar Houses</a></li>
     </ul>
+    <ul>
+        <li><a href="javascript:getProgramInformation()">About this Program</a></li>
+    </ul>
     <script>
+        function estimateHouses() {
+            alert(`This isn't done yet`);
+        }
+        
         function findSimilarHouses() {
-            window.sessionStorage.setItem('ProcessCode','similar');
+            window.sessionStorage.setItem('ProcessCode', 'similar');
             window.location.href = '/FeaturesUI';
+        }
+
+        function getProgramInformation() {
+            if (confirm(`House Price Predictor\nAuthors: Max Herrick and Nate Arkin\n\nThis program, written with a HTML/JS front end and a Python backend, is meant as a project to demonstrate the capabilities of Artificial Intelligence and Machine Learning in predicting housing prices. \n\nThis project is hosted on GitHub. Would you like to visit the Repo?`)) {
+                window.location.href = 'https://github.com/narkin/HousePricePredictor';
+            }
         }
     </script>
 </body>
