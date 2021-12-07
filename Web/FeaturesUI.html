@@ -68,7 +68,9 @@
                 }
             } else {
                 if (processCode == 'similar') {
-                    document.getElementById('introText').innerText = 'Select options below that you require in a house, and similar houses will be shown to you that might have sold recently.'
+                    document.getElementById('introText').innerText = 'Select options below that you require in a house, and similar houses will be shown to you that might have sold recently.';
+                } else if (processCode == 'pricer') {
+                    document.getElementById('introText').innerText = 'Select options below that you require in a house, and the program will determine a fair price based on previous sales. For any features that don\'t get checked, the mean value will be used.';
                 }
             }
         }
@@ -82,16 +84,16 @@
         )})
 
         function submitFeatures(form) {
+            var featuresRequired = {};
+            ['noBedrooms','noFullBaths','noHalfBaths','noCarGarage','overallQuality','overallCond'].forEach(id => {
+                if (form[id+'Activate'].checked) {
+                    featuresRequired[id] = form[id].value;
+                }
+            })
+            console.log(featuresRequired);
             if (processCode == 'similar') {
                 // submit code for similar process:
                 // alert('submitting for similar')
-                var featuresRequired = {};
-                ['noBedrooms','noFullBaths','noHalfBaths','noCarGarage','overallQuality','overallCond'].forEach(id => {
-                    if (form[id+'Activate'].checked) {
-                        featuresRequired[id] = form[id].value;
-                    }
-                })
-                console.log(featuresRequired);
                 $.post('/api/getSimilarHouses', featuresRequired, data => {
                     console.log(JSON.parse(data));
                     parsedData = JSON.parse(data);
@@ -120,6 +122,14 @@
                         document.getElementById('results').innerHTML = '<h2>Results:</h2>';
                         document.getElementById('results').appendChild(table);
                     }
+                })
+            } else if (processCode == 'pricer') {
+                $.post('/api/getHousePrice', featuresRequired, data => {
+                    console.log(JSON.parse(data));
+                    parsedData = JSON.parse(data);
+
+                    document.getElementById('results').innerHTML = `<h2>Results:</h2>
+                        This house might cost an estimated $${data}`;
                 })
             }
         }
